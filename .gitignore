@@ -1,0 +1,9 @@
+
+// .gitignore
+node_modules/
+build/
+.env
+.DS_Store
+.idea/
+*.log
+*.lock
