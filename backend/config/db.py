@@ -1,11 +1,9 @@
-# config/db.py
-from pymongo import MongoClient
+from couchbase.cluster import Cluster, ClusterOptions
+from couchbase.auth import PasswordAuthenticator
+from couchbase.collection import Scope, Collection
 
-client = MongoClient("mongodb://localhost:27017")
-db = client.techblog
-articles_collection = db.articles
-comments_collection = db.comments
-
-# utils/helper.py
-def object_id_str(obj):
-    return str(obj)
+# Connect to Couchbase
+cluster = Cluster("couchbases://cb.jwj94tyzao6ctshc.cloud.couchbase.com", ClusterOptions(PasswordAuthenticator("admin", "Admin123$")))
+bucket = cluster.bucket("techblog")
+collection_articles = bucket.scope("default").collection("articles")
+collection_comments = bucket.scope("default").collection("comments")

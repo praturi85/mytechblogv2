@@ -7,3 +7,5 @@ build/
 .idea/
 *.log
 *.lock
+.venv
+__pycache__
